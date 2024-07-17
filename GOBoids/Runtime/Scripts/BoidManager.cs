@@ -9,7 +9,7 @@ public class BoidManager : MonoBehaviour {
 	[Header("Settings")]
     public BoidSettings settings;
     public ComputeShader compute;
-    public bool useGPU = true;
+    public bool useGPU = false;
 
 	[Header("Target")]
 	public Transform target;
@@ -109,7 +109,7 @@ public class BoidManager : MonoBehaviour {
                                     boidData[i].numFlockmates += 1;
                                     boidData[i].flockHeading += boidB.direction;
                                     boidData[i].flockCentre += boidB.position;
-                                    boidData[i].avoidanceHeading -= (offset.normalized / sqrDst);
+                                    boidData[i].avoidanceHeading += -offset.normalized * Mathf.Exp(-sqrDst * settings.avoidanceDamping);
                                 }
                             }
 						}

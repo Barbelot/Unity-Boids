@@ -15,8 +15,12 @@ public class BoidSettings : ScriptableObject {
     public float directionNoiseIntensity = 0;
     public float directionNoiseFrequency = 0.1f;
 
-    [Header("Radii")]
-    public float perceptionRadius = 2.5f;
+    [Header("Perception")]
+    public float perceptionRadius = 50f;
+
+    [Header("Avoidance")]
+    [Tooltip("Higher value means avoidance happens at lower distance.")]
+    public float avoidanceDamping = 2;
     //public Vector2 avoidanceRadius = new Vector2(1, 2);
 
     [Header("Steering")]
@@ -28,6 +32,7 @@ public class BoidSettings : ScriptableObject {
     public float separateWeight = 1;
     public float targetWeight = 1;
 
+    [Header("Target")]
     public float targetCatchupStrength = 0;
     public Vector2 targetCatchupRadiusMinMax = new Vector3(2, 4);
 
