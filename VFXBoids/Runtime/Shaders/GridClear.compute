@@ -1,0 +1,13 @@
+#pragma kernel CSGlobal_GridClear
+
+#define UPDATE_GRID 1
+#include "GridCommon.hlsl"
+
+[numthreads(8,1,1)]
+void CSGlobal_GridClear(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x < GRID_DIM_X * GRID_DIM_Y)
+    {
+        Global_Grid_Count[id.x] = 0u;
+    }
+}
